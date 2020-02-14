@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ValueComponent } from './value/value.component';
 
 @Component({
   selector: 'app-root',
