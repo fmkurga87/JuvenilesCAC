@@ -1,17 +1,25 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Juveniles Colon</a>
+    <a class="navbar-brand" [routerLink]="['/home']" >Juveniles Colon</a>
     
     <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Jugadores</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/players']"  >Jugadores</a>
       </li>
+      <li class="nav-item" routerLinkActive="active"> 
+        <a class="nav-link" [routerLink]="['/lists']" >Listas</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['/messages']" >Mensajes</a>
+      </li>
+      <!-- ## POR AHORA LO COMENTAMOS PARA SEGUIR EL CURSO, LUEGO LO ACTIVAMOS. ##
+           ## (Ver video 64) ##
       <li class="nav-item">
         <a class="nav-link" href="#">Fixtures</a>
       </li>
       <li class="nav-item">
       <a class="nav-link" href="#">Estadisticas</a>
-      </li>
+      </li>-->
     </ul>
     
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
