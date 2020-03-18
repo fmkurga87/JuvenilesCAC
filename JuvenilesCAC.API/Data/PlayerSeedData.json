@@ -1,0 +1,73 @@
+[
+    {
+      "surname": "Bruno",
+      "names": "Maximiliano Gabriel",
+      "DateOfBirth": "2000-01-01",
+      "DateOfJoin": "2018-05-20",
+      "Height": 170,
+      "Photos": [
+        {
+          "url": "https://a1.espncdn.com/combiner/i?img=%2Fmedia%2Fimages%2F2018%2F1205%2FHu_181205_Deportes_News_Fut_OCtava_Colon_Campeon_Arquero%2FHu_181205_Deportes_News_Fut_OCtava_Colon_Campeon_Arquero.jpg",
+          "Main": true,
+          "description": "Maximiliano Bruno, foto buscada en Google"
+        }
+      ]
+    },
+    {
+      "surname": "Bolgiani",
+      "names": "Lautaro Ariel",
+      "DateOfBirth": "2002-11-26",
+      "DateOfJoin": "2020-01-08",
+      "Height": 173,
+      "Photos": [
+        {
+          "url": "https://webcunadegigantes.files.wordpress.com/2017/08/img-20170825-wa0021.jpg?w=720",
+          "Main": true,
+          "description": "Lautaro Bolgiani, foto buscada en Google."
+        }
+      ]
+    },
+    {
+      "surname": "Curcio",
+      "names": "Rodrigo Nahuel",
+      "DateOfBirth": "2005-04-22",
+      "DateOfJoin": "2015-09-29",
+      "Height": 170,
+      "Photos": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg/540px-Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg.png",
+          "Main": true,
+          "description": "Foto provisoria, de Wikipedia, en caso de no tener foto del jugador."
+        }
+      ]
+    },
+    {
+      "surname": "Zabala",
+      "names": "Leandro Nicolas",
+      "DateOfBirth": "2000-05-31",
+      "DateOfJoin": "2016-12-16",
+      "Height": 166,
+      "Photos": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg/540px-Escudo_del_Club_Atl%C3%A9tico_Col%C3%B3n.svg.png",
+          "Main": true,
+          "description": "Foto provisoria, de Wikipedia, en caso de no tener foto del jugador."
+        }
+      ]
+    },
+    {
+      "surname": "Rosatti",
+      "names": "Marcelo Alejandro",
+      "Gender": "male",
+      "DateOfBirth": "2003-06-18",
+      "DateOfJoin": "2017-01-01",
+      "Height": 165,
+      "Photos": [
+        {
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNk73jdT9eHHVH5hawuUJBWIQ7HxZfOfz_h6NQkNwwJ1FEFg-_yQ&s",
+          "Main": true,
+          "description": "Fuerza, loco.."
+        }
+      ]
+    }
+  ]
