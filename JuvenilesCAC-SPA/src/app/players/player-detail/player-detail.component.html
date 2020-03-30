@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{player.photoUrl}}" alt="{{player.surname}}">
+        <div class="card-body">
+          <strong>Nacimiento: </strong>
+          <p>{{player.dateOfBirth}} ({{player.age}} años)</p>
+        </div>
+        <div class="card-body">
+          <strong>Jugador desde: </strong>
+          <p>{{player.dateOfJoin}}</p>
+        </div>
+        <!-- Ver si agregamos alguna info mas -->
+      </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class= "btn btn-primary w-100">OK</button>
+          <button class= "btn btn-success w-100">Mensaje</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="player-tabset">
+          <tab heading="Sobre {{player.names}} {{player.surname}}">
+            <h4>Fecha de Nacimiento</h4>
+            <p>{{player.dateOfBirth}}</p>
+            <h4>Edad:</h4>
+            <p>{{player.age}}</p>
+            <h4>Ciudad:</h4>
+            <p><i>Atributo futuro.</i></p>
+          </tab>
+          <tab heading="Como jugador">
+            <h4>Fecha de ingreso</h4>
+            <p>{{player.dateOfJoin}}</p>
+            <h4>Posicion/es:</h4>
+            <p><i>Atributo futuro.</i></p>
+            <h4>Partidos/Estadisticas:</h4>
+            <p><i>Atributo futuro.</i></p>
+          </tab>
+          <tab heading="Fotos">
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+          </tab>
+          <tab heading="Comentarios">
+            <p>Comentarios sobre el jugador no implementado.</p>
+          </tab>
+        </tabset> 
+      </div>
+    </div>
+  </div>
+</div>
