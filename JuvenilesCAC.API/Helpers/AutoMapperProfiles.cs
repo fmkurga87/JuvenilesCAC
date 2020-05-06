@@ -19,7 +19,14 @@ namespace JuvenilesCAC.API.Helpers
                         opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.Main).Url))
                 .ForMember(dest => dest.Age, opt => 
                         opt.MapFrom(src => src.DateOfBirth.HasValue ? src.DateOfBirth.Value.CalculateAge() : 0));
+            CreateMap<User, UserForListDto>()
+                .ForMember(dest => dest.Age, opt => 
+                    opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
+            CreateMap<User, UserForDetailedDto>()
+                .ForMember(dest => dest.Age, opt => 
+                    opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
             CreateMap<Photo, PhotoForDetailedDto>();
+            CreateMap<UserForUpdateDto, User>();
         }
         
     }

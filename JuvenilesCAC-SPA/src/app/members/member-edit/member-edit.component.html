@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1>Mis datos</h1>
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <strong>Atención:</strong> Cambios realizados. Se perderá cualquier cambio que no haya sido guardado.
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <!-- Ver de agregar una foto/avatar -->
+        <!--<img class="card-img-top img-thumbnail" src="{{player.photoUrl}}" alt="{{player.surname}}">-->
+        <div class="card-body">
+          <strong>Nacimiento: </strong>
+          <p>{{user.dateOfBirth}} ({{user.age}} años)</p>
+        </div>
+        <div class="card-body">
+          <strong>Usuario: </strong>
+          <p>{{user.username}}</p>
+        </div>
+        <!-- Ver si agregamos alguna info mas -->
+      </div>
+      <div class="card-footer">
+        <button [disabled]="!editForm.dirty" form="editForm" class= "btn btn-success btn-block">Guardar cambios</button>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="user-tabset">
+          <tab heading="Editar Perfil">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+              <!-- VER VIDEO 98 -->
+              <h4>Nombre</h4>
+              <textarea name="name" rows="1" class="form-control" [(ngModel)]="user.name"></textarea>
+              <h4>Apellido</h4>
+              <textarea name="surname" rows="1" class="form-control" [(ngModel)]="user.surname"></textarea>
+              <h4>Apodo</h4>
+              <textarea name="knownAs" rows="1" class="form-control" [(ngModel)]="user.knownAs"></textarea>
+              <h4>Fecha de Nacimiento</h4>
+              <textarea name="dateOfBirth" rows="1" class="form-control" [(ngModel)]="user.dateOfBirth"></textarea>
+              <!--<h4>Edad:</h4>
+              <p>{{user.age}}</p>-->
+            </form>
+          </tab>
+          <tab heading="Foto de perfil">
+            <p><i>Atributo futuro.</i></p>
+          </tab>
+        </tabset> 
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,10 @@ import { PlayerCardComponent } from './players/player-card/player-card.component
 import { PlayerDetailComponent } from './players/player-detail/player-detail.component';
 import { PlayerDetailResolver } from './_resolvers/player-detail.resolver';
 import { PlayerListResolver } from './_resolvers/player-list.resolver';
+import { PlayerEditComponent } from './players/player-edit/player-edit.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 export function fxTokenGetter() {
    return localStorage.getItem('token');
@@ -45,7 +49,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
       ListsComponent,
       MessagesComponent,
       PlayerCardComponent,
-      PlayerDetailComponent
+      PlayerDetailComponent,
+      PlayerEditComponent,
+      MemberEditComponent
    ],
    imports: [
       BrowserModule,
@@ -69,7 +75,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
       ErrorInterceptorProvider,
       PlayerDetailResolver,
       PlayerListResolver,
-      { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
+      { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig },
+      MemberEditResolver,
+      PreventUnsavedChanges
    ],
    bootstrap: [
       AppComponent
