@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -26,6 +27,9 @@ import { PlayerEditComponent } from './players/player-edit/player-edit.component
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from './players/photo-editor/photo-editor.component';
+import { PlayerEditResolver } from './_resolvers/player-edit.resolver';
+
 
 export function fxTokenGetter() {
    return localStorage.getItem('token');
@@ -51,7 +55,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
       PlayerCardComponent,
       PlayerDetailComponent,
       PlayerEditComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      PhotoEditorComponent
    ],
    imports: [
       BrowserModule,
@@ -62,6 +67,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxGalleryModule,
+      FileUploadModule,
       JwtModule.forRoot({
          config: {
             tokenGetter: fxTokenGetter,
@@ -77,7 +83,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
       PlayerListResolver,
       { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig },
       MemberEditResolver,
-      PreventUnsavedChanges
+      PreventUnsavedChanges,
+      PlayerEditResolver
    ],
    bootstrap: [
       AppComponent

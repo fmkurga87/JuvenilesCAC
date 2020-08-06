@@ -10,14 +10,25 @@ import { Player } from '../_models/player';
 export class PlayerService {
   baseUrl = environment.apiUrl;
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-getPlayers(): Observable<Player[]> {
-  return this.http.get<Player[]>(this.baseUrl + 'players');
-}
+  getPlayers(): Observable<Player[]> {
+    return this.http.get<Player[]>(this.baseUrl + 'players');
+  }
 
-getPlayer(id): Observable<Player> {
-  return this.http.get<Player>(this.baseUrl + 'players/' + id);
-}
+  getPlayer(id): Observable<Player> {
+    return this.http.get<Player>(this.baseUrl + 'players/' + id);
+  }
 
+  updatePlayer(id: number, player: Player) {
+    return this.http.put(this.baseUrl + 'players/' + id, player);
+  }
+
+  setMainPhoto(playerId: number, id: number) {
+    return this.http.post(this.baseUrl + 'players/' + playerId + '/photos/' + id + '/setMain', {});
+  }
+
+  deletePhoto(playerId: number, id: number) {
+    return this.http.delete(this.baseUrl + 'players/' + playerId + '/photos/' + id);
+  }
 }

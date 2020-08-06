@@ -1,3 +1,75 @@
-<p>
-  player-edit works!
-</p>
+<!-- VER VIDEO 110 PARA AGREGAR LA LISTA DE FOTOS!!-->
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1>Editar Jugador</h1>
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <strong>Atención:</strong> Cambios realizados. Se perderá cualquier cambio que no haya sido guardado.
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{player.photoUrl}}" alt="{{player.surname}}">
+        <div class="card-body">
+          <strong>Nacimiento: </strong>
+          <p>{{player.dateOfBirth}} ({{player.age}} años)</p>
+        </div>
+        <div class="card-body">
+          <strong>Jugador desde: </strong>
+          <p>{{player.dateOfJoin}}</p>
+        </div>
+        <!-- Ver si agregamos alguna info mas -->
+      </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <a class="btn btn-primary w-100" [routerLink]="['/player/edit']" > Editar </a>
+          <!--<button class= "btn btn-primary w-100">Editar</button>-->
+          <button class= "btn btn-success w-100">Mensaje</button>
+        </div>
+        <div class="card-footer">
+          <button [disabled]="!editForm.dirty" form="editForm" class= "btn btn-success btn-block">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePlayer()">
+        <div class="tab-panel">
+          <tabset class="player-tabset">
+            <tab heading="Sobre {{player.names}} {{player.surname}}">
+              <h4>Nombre Completo</h4>
+              <textarea name="names" rows="1" class="form-control" [(ngModel)]="player.names"></textarea>
+              <h4>Apellido</h4>
+              <textarea name="surname" rows="1" class="form-control" [(ngModel)]="player.surname"></textarea>
+              <h4>Fecha de Nacimiento</h4>
+              <textarea name="dateOfBirth" rows="1" class="form-control" [(ngModel)]="player.dateOfBirth"></textarea>
+              <h4>Edad:</h4>
+              <p>{{player.age}}</p>
+              <h4>Ciudad:</h4>
+              <p><i>Atributo futuro.</i></p>
+            </tab>
+            <tab heading="Como jugador">
+              <h4>Fecha de ingreso</h4>
+              <textarea name="dateOfJoin" rows="1" class="form-control" [(ngModel)]="player.dateOfJoin"></textarea>
+              <h4>Posicion/es:</h4>
+              <p><i>Atributo futuro.</i></p>
+              <h4>Partidos/Estadisticas:</h4>
+              <p><i>Atributo futuro.</i></p>
+            </tab>
+            <tab heading="Cargar Fotos">
+              <app-photo-editor [photos]="player.photos" (getPlayerPhotoChange)="updateMainPhoto($event)"></app-photo-editor>
+            </tab>
+            <tab heading="Comentarios">
+              <p>Comentarios sobre el jugador no implementado.</p>
+            </tab>
+          </tabset> 
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

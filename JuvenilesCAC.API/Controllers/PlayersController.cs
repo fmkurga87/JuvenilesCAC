@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using AutoMapper;
 using JuvenilesCAC.API.Dtos;
+using System.Security.Claims;
+using System;
 
 namespace JuvenilesCAC.API.Controllers
 {
@@ -39,6 +41,21 @@ namespace JuvenilesCAC.API.Controllers
             var playerToReturn = _mapper.Map<PlayerForDetailedDto>(player);
 
             return Ok(playerToReturn);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePlayer(int id, PlayerForUpdateDto playerForUpdateDto) 
+        { 
+            // TODO: Ver si validamos que existe el jugador.
+            
+            var playerFromRepo = await _repo.GetPlayer(id);
+
+            _mapper.Map(playerForUpdateDto, playerFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Hubo una falla al actualizar el jugador {id}");
         }
 
     }

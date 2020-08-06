@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using JuvenilesCAC.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,12 @@ namespace JuvenilesCAC.API.Data
             _context.Remove(entity);
         }
 
+        public async Task<Photo> GetPhoto(int id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+            return photo;
+        }
+
         public async Task<Player> GetPlayer(int id)
         {
             var player = await _context.Players.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
@@ -39,5 +46,11 @@ namespace JuvenilesCAC.API.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<Photo> GetMainPhotoForPlayer(int playerId)
+        {
+            return await _context.Photos.Where(x => x.PlayerId == playerId).FirstOrDefaultAsync(p => p.Main);
+        }
+
     }
 }

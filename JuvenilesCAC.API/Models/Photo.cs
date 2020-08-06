@@ -9,6 +9,7 @@ namespace JuvenilesCAC.API.Models
         public string Description { get; set; }
         public DateTime DateAdded { get; set; }
         public bool Main { get; set; }
+        public string PublicId { get; set; }
         public Player Player { get; set; }
         public int PlayerId { get; set; }
     }

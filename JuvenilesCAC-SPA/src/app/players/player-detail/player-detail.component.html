@@ -15,7 +15,9 @@
       </div>
       <div class="card-footer">
         <div class="btn-group d-flex">
-          <button class= "btn btn-primary w-100">OK</button>
+          <a class="btn btn-primary w-100" [routerLink]="['/player/edit/', player.id]" > Editar </a>
+          <!--<li class="list-inline-item"><button class="btn btn-primary" [routerLink]="['/players/', player.id]" ><i class="fa fa-user"></i></button></li>-->
+          <!--<button class= "btn btn-primary w-100">Editar</button>-->
           <button class= "btn btn-success w-100">Mensaje</button>
         </div>
       </div>

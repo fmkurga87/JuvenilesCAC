@@ -11,6 +11,7 @@ import { PlayerEditComponent } from './players/player-edit/player-edit.component
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { PlayerEditResolver } from './_resolvers/player-edit.resolver';
 
 // Video 63
 export const appRoutes: Routes = [
@@ -26,10 +27,11 @@ export const appRoutes: Routes = [
             // Video 97
             // Ojo, en el curso no lo hace porque ahi no es necesario, pero hay que pasar el id del jugador.
             // Lo dejo para mas adelante editarlo.
-            { path: 'player/edit', component: PlayerEditComponent },
+            { path: 'player/edit/:id', component: PlayerEditComponent, resolve: {player: PlayerEditResolver},
+                canDeactivate: [PreventUnsavedChanges] },
             // Video 97
             // Para que el usuario pueda editar su propia info.
-            { path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver}, 
+            { path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver},
                 canDeactivate: [PreventUnsavedChanges] },
             { path: 'messages', component: MessagesComponent },
             { path: 'lists', component: ListsComponent },
