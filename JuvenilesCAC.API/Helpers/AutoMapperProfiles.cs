@@ -30,6 +30,7 @@ namespace JuvenilesCAC.API.Helpers
             CreateMap<PlayerForUpdateDto, Player>();
             CreateMap<Photo, PhotoForReturnDto>();
             CreateMap<PhotoForCreationDto, Photo>();
+            CreateMap<UserForRegisterDto, User>();
         }
         
     }

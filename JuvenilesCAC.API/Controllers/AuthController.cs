@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using JuvenilesCAC.API.Data;
 using JuvenilesCAC.API.Dtos;
 using JuvenilesCAC.API.Models;
@@ -18,10 +19,12 @@ namespace JuvenilesCAC.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        private readonly IMapper _mapper;
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
             _config = config;
             _repo = repo;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -34,14 +37,14 @@ namespace JuvenilesCAC.API.Controllers
                 return BadRequest("Ya existe un usuario con ese nombre");
             }
 
-            var userToCreate = new User()
-            {
-                UserName = userForRegisterDto.username,
-            };
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.password);
 
-            return StatusCode(201);
+            var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser);
+
+            // Video 131
+            return CreatedAtRoute("GetUser", new {controller = "Users", id = createdUser.Id}, userToReturn);
         }
 
         [HttpPost("login")]
