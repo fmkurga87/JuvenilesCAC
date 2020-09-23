@@ -5,11 +5,11 @@
         <img class="card-img-top img-thumbnail" src="{{player.photoUrl}}" alt="{{player.surname}}">
         <div class="card-body">
           <strong>Nacimiento: </strong>
-          <p>{{player.dateOfBirth}} ({{player.age}} años)</p>
+          <p>{{player.dateOfBirth | date}} ({{player.age}} años)</p>
         </div>
         <div class="card-body">
           <strong>Jugador desde: </strong>
-          <p>{{player.dateOfJoin}}</p>
+          <p>{{player.dateOfJoin | date}}</p>
         </div>
         <!-- Ver si agregamos alguna info mas -->
       </div>

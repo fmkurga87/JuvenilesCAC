@@ -20,6 +20,10 @@ export class PlayerService {
     return this.http.get<Player>(this.baseUrl + 'players/' + id);
   }
 
+  newPLayer(player: Player) {
+    return this.http.post(this.baseUrl + 'players/new', player);
+  }
+
   updatePlayer(id: number, player: Player) {
     return this.http.put(this.baseUrl + 'players/' + id, player);
   }

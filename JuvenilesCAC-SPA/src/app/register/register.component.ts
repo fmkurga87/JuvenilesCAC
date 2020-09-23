@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
       }, error => {
         this.alertify.error(error);
       }, () => {
-        // Video 132 
+        // Video 132
         this.authService.login(this.user).subscribe(() => {
           this.router.navigate(['/players']);
         });

@@ -7,6 +7,7 @@ using AutoMapper;
 using JuvenilesCAC.API.Dtos;
 using System.Security.Claims;
 using System;
+using JuvenilesCAC.API.Models;
 
 namespace JuvenilesCAC.API.Controllers
 {
@@ -33,7 +34,7 @@ namespace JuvenilesCAC.API.Controllers
             return Ok(playersToReturn);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetPlayer")]
         public async Task<IActionResult> GetPlayer(int id)
         {
             var player = await _repo.GetPlayer(id);
@@ -56,6 +57,27 @@ namespace JuvenilesCAC.API.Controllers
                 return NoContent();
 
             throw new Exception($"Hubo una falla al actualizar el jugador {id}");
+        }
+
+        [HttpPost("new")]
+        public async Task<IActionResult> AddPlayer(PlayerForCreateDto playerForCreateDto) 
+        {
+            // TODO: Validar si existe el jugador, basarse en lo siguiente:
+            /*userForRegisterDto.username = userForRegisterDto.username.ToLower();
+
+            if (await _repo.UserExists(userForRegisterDto.username))
+            {
+                return BadRequest("Ya existe un usuario con ese nombre");
+            }*/
+
+            var playerToCreate = _mapper.Map<Player>(playerForCreateDto);
+
+            var createdPlayer = await _repo.Add(playerToCreate);
+
+            var playerToReturn = _mapper.Map<PlayerForDetailedDto>(createdPlayer);
+
+            // Video 131
+            return CreatedAtRoute("GetPlayer", new {controller = "Players", id = createdPlayer.Id}, playerToReturn);
         }
 
     }

@@ -29,6 +29,7 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './players/photo-editor/photo-editor.component';
 import { PlayerEditResolver } from './_resolvers/player-edit.resolver';
+import { PlayerNewComponent } from './players/player-new/player-new.component';
 
 
 export function fxTokenGetter() {
@@ -55,6 +56,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
       PlayerCardComponent,
       PlayerDetailComponent,
       PlayerEditComponent,
+      PlayerNewComponent,
       MemberEditComponent,
       PhotoEditorComponent
    ],

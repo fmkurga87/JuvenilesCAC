@@ -1,5 +1,11 @@
 <div class="container mt-5">
-  <div class="row">
+  
+  <div class="form-group text-center">
+    <button class="btn btn-success" type="submit" [routerLink]="['/player/new']"><i class="fa fa-user-plus"></i><b> Agregar Jugador</b></button>
+  </div>
+
+
+  <div class="row mt-5">
     <div *ngFor="let player of players" class="col-lg-2 col-md-3 col-sm-6">
       <app-player-card [player]="player"></app-player-card>
     </div>

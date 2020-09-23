@@ -19,6 +19,14 @@ namespace JuvenilesCAC.API.Data
             _context.Add(entity);
         }
 
+        public async Task<Player> Add(Player player)
+        {
+            await _context.Players.AddAsync(player);
+            await _context.SaveChangesAsync();
+
+            return player;
+        }
+
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
